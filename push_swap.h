@@ -5,6 +5,10 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <limits.h>
+# include <math.h>
+# include <stdbool.h>
+# include "ft_printf/ft_printf.h"
+# include "ft_printf/Libft/libft.h"
 
 typedef struct s_node
 {
@@ -28,6 +32,6 @@ typedef struct s_node
   The tar pointer is the target node in the other stack (for the algorithm).*/
 
 long	ft_atoll(char *s);
-int		check_args(char **argv);
+int		check_args(char **argv, int fr);
 
 #endif
