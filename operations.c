@@ -53,6 +53,7 @@ void    sa(t_list **headA)
 	temp->data = swap;
 	write(1, "sa", 2);
 }
+
 void	sb(t_list **headB)
 {
 	t_list	*top;
@@ -140,11 +141,11 @@ void	reverse_rotate(t_list **head)
 		return;
 	last = NULL;
 	secondLast = *head;
-	while (secondLast ->next->next != NULL)
-		secondLast = secondLast -> next;
-	last = secondLast -> next;
-	secondLast -> next = NULL;
-	last -> next = *head;
+	while (secondLast->next->next != NULL)
+		secondLast = secondLast->next;
+	last = secondLast->next;
+	secondLast->next = NULL;
+	last->next = *head;
 	*head = last;
 }
 
@@ -162,4 +163,17 @@ void	rotate(t_list **list)
 	*list = head->next;
 	head->next = NULL;
 	tail->next = head;
+}
+
+size_t	list_len(const t_list	*list)
+{
+	size_t	i;
+
+	i = 0;
+	while(list)
+	{
+		list = list->next;
+		i++;
+	}
+	return (i);
 }
