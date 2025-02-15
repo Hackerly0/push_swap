@@ -4,7 +4,7 @@ int main(int argc, char *argv[])
 {
     t_node	*a;
     t_node	*b;
-    int			fr;
+    int		fr;
 
 	fr = 0;
     if ((argc == 1) || (argc == 2 && argv[1][0] == '\0'))
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         write(1, "Duplicates found!\n", 18);
         return (0);
     }
-    init_stack(&a, argv);
+    init_stack(&a, &b, argv);
 	if (!stack_sorted(&a))
         radix_sort(&a, &b);
 	free_stack(&a);

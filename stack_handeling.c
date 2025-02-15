@@ -41,12 +41,14 @@ static int create_list(t_node **a, long num)
     return (1);
 }
 
-void    init_stack(t_node **a, char *argv[])
+void    init_stack(t_node **a, t_node **b, char *argv[])
 {
     int		i;
     long	num;
 
     i = -1;
+    *a = NULL;
+    *b = NULL;
     while (argv[++i])
     {
         num = ft_atoll(argv[i]);

@@ -43,7 +43,7 @@ void	reverse_rotate(t_node **head);
 void	rotate(t_node **list);
 size_t	list_len(const t_node	*list);
 int		stack_sorted(t_node **stack_a);
-void    init_stack(t_node **a, char *argv[]);
+void    init_stack(t_node **a, t_node **b, char *argv[]);
 void    free_stack(t_node **stack);
 void	radix_sort(t_node **a, t_node **b);
 
