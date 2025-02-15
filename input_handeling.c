@@ -38,8 +38,7 @@ long    ft_atoll(char *s)
 	long	num;
 
 	num = 0;
-	sign = 1;
-	skip_spaces_sign(&s);
+	sign = skip_spaces_sign(&s); // bro, i spent an hour thinking why your program convert the negative number to positive. Turns out you forgot to assign the return value of this function. allah yesam7ak
 	if (ft_strlen(s) > 11)
 		return (LONG_MAX);
 	if (!(*s >= '0' && *s <= '9'))
