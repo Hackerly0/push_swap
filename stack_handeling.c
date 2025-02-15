@@ -31,17 +31,12 @@ static int create_list(t_node **a, long num)
         return (0);
     node->next = NULL;
     node->data = num;
-    node->cheap = 0;
     if (!(*a))
-    {
         *a = node;
-        node->prev = NULL;
-    }
     else
     {
         last = find_last(*a);
         last->next = node;
-        node->prev = last;
     }
     return (1);
 }

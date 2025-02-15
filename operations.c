@@ -1,27 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "push_swap.h"
 
-typedef struct	s_list
+int	searchForNode(t_node **head, int value)
 {
-	int data;
-	struct s_list *next;
-	struct s_list *prev;
-}	t_list;
-
-typedef struct  Node
-{
-	int				data;
-	struct Node*	next;
-}	Node;
-
-typedef struct	Stack
-{
-	Node*	top;
-}	Stack;
-
-int	searchForNode(t_list **head, int value)
-{
-	t_list	*list;
+	t_node	*list;
 	int		i;
 
 	if (head == NULL || *head == NULL)
@@ -33,15 +16,15 @@ int	searchForNode(t_list **head, int value)
 		if (list -> data == value)
 			return (i);
 		i++;
-		list = list -> next;
+		list = list->next;
 	}
-	return (list);
+	return (i);
 }
 
-void    sa(t_list **headA)
+void    sa(t_node **headA)
 {
-	t_list	*top;
-	t_list	*temp;
+	t_node	*top;
+	t_node	*temp;
 	int		swap;
 
 	if (headA == NULL || *headA == NULL || (*headA)->next == NULL)
@@ -54,10 +37,10 @@ void    sa(t_list **headA)
 	write(1, "sa", 2);
 }
 
-void	sb(t_list **headB)
+void	sb(t_node **headB)
 {
-	t_list	*top;
-	t_list	*temp;
+	t_node	*top;
+	t_node	*temp;
 	int		swap;
 
 	if (headB == NULL || *headB == NULL || (*headB)->next == NULL)
@@ -70,9 +53,9 @@ void	sb(t_list **headB)
 	write(1, "sb", 2);
 }
 
-void	pa(t_list **headA, t_list **headB)
+void	pa(t_node **headA, t_node **headB)
 {
-	t_list	*topB;
+	t_node	*topB;
 
 	if (headB == NULL || *headB == NULL)
 		return;
@@ -80,11 +63,12 @@ void	pa(t_list **headA, t_list **headB)
 	*headB = topB->next;
 	topB->next = *headA;
 	*headA = topB;
+	write(1, "pa\n", 3);
 }
 
-void	pb(t_list **headA, t_list **headB)
+void	pb(t_node **headA, t_node **headB)
 {
-	t_list	*topA;
+	t_node	*topA;
 
 	if (headA == NULL || *headA == NULL)
 		return ;
@@ -92,50 +76,51 @@ void	pb(t_list **headA, t_list **headB)
 	*headA = topA->next;
 	topA->next = *headB;
 	*headB = topA;
+	write(1, "pb\n", 3);
 }
 
-void    ra(t_list **headA)
+void    ra(t_node **headA)
 {
 	rotate(headA);
 	write(1, "ra\n", 3);
 }
 
-void    rb(t_list **headB)
+void    rb(t_node **headB)
 {
 	rotate(headB);
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_list **headA, t_list **headB)
+void	rr(t_node **headA, t_node **headB)
 {
 	rotate(headA);
 	rotate(headB);
 	write(1, "rr\n", 3);	
 }
 
-void    rra(t_list **headA)
+void    rra(t_node **headA)
 {
 	reverse_rotate(headA);
 	write(1, "rra\n", 4);
 }
 
-void    rrb(t_list **headB)
+void    rrb(t_node **headB)
 {
 	reverse_rotate(headB);
 	write(1, "rrb\n", 4);
 }
 
-void    rrr(t_list **headA, t_list **headB)
+void    rrr(t_node **headA, t_node **headB)
 {
 	reverse_rotate(headA);
 	reverse_rotate(headB);
 	write(1, "rrr\n", 4);
 }
 
-void	reverse_rotate(t_list **head)
+void	reverse_rotate(t_node **head)
 {
-	t_list	*last;
-	t_list	*secondLast;
+	t_node	*last;
+	t_node	*secondLast;
 
 	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return;
@@ -149,10 +134,10 @@ void	reverse_rotate(t_list **head)
 	*head = last;
 }
 
-void	rotate(t_list **list)
+void	rotate(t_node **list)
 {
-	t_list	*head;
-	t_list	*tail;
+	t_node	*head;
+	t_node	*tail;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return ;
@@ -165,7 +150,7 @@ void	rotate(t_list **list)
 	tail->next = head;
 }
 
-size_t	list_len(const t_list	*list)
+size_t	list_len(const t_node	*list)
 {
 	size_t	i;
 

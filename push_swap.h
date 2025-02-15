@@ -10,16 +10,11 @@
 # include "ft_printf/ft_printf.h"
 # include "ft_printf/Libft/libft.h"
 
-typedef struct s_node
+typedef struct	s_node
 {
-	int		indx;
-	int		cost;
-	long	data;
-	bool	abv_med;
-	bool	cheap;
+	int				data;
+	int				indx;
 	struct s_node	*next;
-	struct s_node	*prev;
-	struct s_node	*tar;
 }	t_node;
 
 /*The indx var is for the index of the node, we need this in order to find the cheapest element.
@@ -33,5 +28,23 @@ typedef struct s_node
 
 long	ft_atoll(char *s);
 int		check_args(char **argv, int fr);
+int		searchForNode(t_node **head, int value);
+void    sa(t_node **headA);
+void	sb(t_node **headB);
+void	pa(t_node **headA, t_node **headB);
+void	pb(t_node **headA, t_node **headB);
+void    ra(t_node **headA);
+void    rb(t_node **headB);
+void	rr(t_node **headA, t_node **headB);
+void    rra(t_node **headA);
+void    rrb(t_node **headB);
+void    rrr(t_node **headA, t_node **headB);
+void	reverse_rotate(t_node **head);
+void	rotate(t_node **list);
+size_t	list_len(const t_node	*list);
+int		stack_sorted(t_node **stack_a);
+void    init_stack(t_node **a, char *argv[]);
+void    free_stack(t_node **stack);
+void	radix_sort(t_node **a, t_node **b);
 
 #endif
