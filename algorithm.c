@@ -26,8 +26,20 @@ static int	calculate_max_bits(int size)
 
 static void	optimize_rotations(t_node **a, int count)
 {
-	while (count--)
-		rra(a);
+	int	size;
+
+	size = list_len(*a);
+	if (count > size / 2)
+	{
+		int	rotations = size - count;
+		while (rotations--)
+			ra(a);
+	}
+	else
+	{
+		while (count--)
+			rra(a);
+	}
 }
 
 static void	empty_stack_b(t_node **a, t_node **b)

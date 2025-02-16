@@ -38,8 +38,7 @@ long    ft_atoll(char *s)
 	long	num;
 
 	num = 0;
-	sign = 1;
-	skip_spaces_sign(&s);
+	sign = skip_spaces_sign(&s);
 	if (ft_strlen(s) > 11)
 		return (LONG_MAX);
 	if (!(*s >= '0' && *s <= '9'))
