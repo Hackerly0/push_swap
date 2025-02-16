@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnisirat <hnisirat@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 15:28:20 by hnisirat          #+#    #+#             */
+/*   Updated: 2025/02/16 15:28:20 by hnisirat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_free(char **argv)
@@ -29,14 +41,13 @@ char	**get_args(int argc, char *argv[], int *fr)
 int	handle_error(int argc, char *argv[], char ***args, int *fr)
 {
 	if (argc < 2 || (argc == 2 && !argv[1][0]))
-	{
-		ft_printf("Error\n");
 		return (1);
-	}
 	*args = get_args(argc, argv, fr);
+	if (!args)
+		return (1);
 	if (check_args(*args, (argc == 2)))
 	{
-		write(1, "Duplicates found!\n", 18);
+		write(2, "Error\n", 6);
 		if (*fr)
 			ft_free(*args);
 		return (1);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_handeling.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnisirat <hnisirat@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 15:28:17 by hnisirat          #+#    #+#             */
+/*   Updated: 2025/02/16 15:28:17 by hnisirat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	free_and_exit(char **s, int fr)
@@ -40,18 +52,18 @@ long	ft_atoll(char *s)
 	num = 0;
 	sign = skip_spaces_sign(&s);
 	if (ft_strlen(s) > 11)
-		return (LONG_MAX);
+		return (INT_MAX);
 	if (!(*s >= '0' && *s <= '9'))
-		return (LONG_MAX);
+		return (INT_MAX);
 	while (*s >= '0' && *s <= '9')
 	{
 		num = num * 10 + (*s - '0');
 		s++;
-		if ((num > LONG_MAX && sign == 1) || (num - 1 > LONG_MAX && sign == -1))
-			return (LONG_MAX);
+		if ((num > INT_MAX && sign == 1) || (num > INT_MAX && sign == -1))
+			return (INT_MAX);
 	}
 	if (*s != '\0')
-		return (LONG_MAX);
+		return (INT_MAX);
 	return (num * sign);
 }
 
@@ -63,12 +75,12 @@ int	check_args(char **argv, int fr)
 	i = -1;
 	while (argv[++i])
 	{
-		if (ft_atoll(argv[i]) == LONG_MAX)
+		if (ft_atoll(argv[i]) == INT_MAX)
 			free_and_exit(argv, fr);
 		j = i;
 		while (argv[++j])
 		{
-			if (ft_atoll(argv[j]) == LONG_MAX)
+			if (ft_atoll(argv[j]) == INT_MAX)
 				free_and_exit(argv, fr);
 			if (ft_atoll(argv[j]) == ft_atoll(argv[i]))
 				free_and_exit(argv, fr);
