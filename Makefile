@@ -1,5 +1,6 @@
 NAME = push_swap
-SRCS = stack_handeling.c input_handeling.c main.c operations.c algorithm.c hard_coded.c
+SRCS = stack_handeling.c input_handeling.c main.c operations.c \
+algorithm.c algorithm2.c hard_coded.c operations2.c operations3.c
 CFLAGS = -Wall -Wextra -g -Werror
 CC = cc
 OBJS = $(SRCS:.c=.o)

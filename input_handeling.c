@@ -7,7 +7,7 @@ static void	free_and_exit(char **s, int fr)
 	if (!s || !fr)
 		exit(1);
 	i = -1;
-	while(s[++i])
+	while (s[++i])
 	{
 		free(s[i]);
 	}
@@ -32,7 +32,7 @@ static int	skip_spaces_sign(char **s)
 	return (sign);
 }
 
-long    ft_atoll(char *s)
+long	ft_atoll(char *s)
 {
 	int		sign;
 	long	num;
@@ -57,8 +57,8 @@ long    ft_atoll(char *s)
 
 int	check_args(char **argv, int fr)
 {
-	int     i;
-	int     j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (argv[++i])
