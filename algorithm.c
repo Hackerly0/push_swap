@@ -24,30 +24,6 @@ static int	calculate_max_bits(int size)
 	return (max_bits);
 }
 
-static void	optimize_rotations(t_node **a, int count)
-{
-	int	size;
-
-	size = list_len(*a);
-	if (count > size / 2)
-	{
-		int	rotations = size - count;
-		while (rotations--)
-			ra(a);
-	}
-	else
-	{
-		while (count--)
-			rra(a);
-	}
-}
-
-static void	empty_stack_b(t_node **a, t_node **b)
-{
-	while (*b)
-		pa(a, b);
-}
-
 static int	binary_search_index(int *arr, int size, int value)
 {
 	int	left;
@@ -97,23 +73,21 @@ static void	ft_quick_sort(int *arr, int start, int end)
 	ft_quick_sort(arr, start, i);
 	ft_quick_sort(arr, i + 2, end);
 }
-static void	process_current_bit(t_node **a, t_node **b, int bit, int *rot_count)
+static void process_current_bit(t_node **a, t_node **b, int bit)
 {
-	int	processed;
-	int	current_size;
+    int size;
+    int i;
 
-	current_size = list_len(*a);
-	processed = -1;
-	while (++processed < current_size)
-	{
-		if (((*a)->indx >> bit) & 1)
-		{
-			ra(a);
-			(*rot_count)++;
-		}
-		else
-			pb(a, b);
-	}
+	i = 0;
+	size = list_len(*a);
+    while (i < size)
+    {
+        if (((*a)->indx >> bit) & 1)
+            ra(a);
+        else
+            pb(a, b);
+        i++;
+    }
 }
 
 static void	set_index(t_node **stack)
@@ -144,23 +118,30 @@ static void	set_index(t_node **stack)
 	free(arr);
 }
 
-/* Optimized radix sort with rotation tracking */
-void	radix_sort(t_node **a, t_node **b)
+void radix_sort(t_node **a, t_node **b)
 {
-	int	bit;
-	int	max_bits;
-	int	size;
-	int	rot_count;
+    int bit, max_bits, size;
 
-	set_index(a);
-	size = list_len(*a);
-	max_bits = calculate_max_bits(size - 1);
-	bit = -1;
-	while (++bit < max_bits)
+	if (list_len(*a) <= 2)
+		sort_two(a);
+	else if (list_len(*a) <= 3)
+		sort_three(a);
+	else if (list_len(*a) <= 5)
+		sort_five(a, b);
+	else
 	{
-		rot_count = 0;
-		process_current_bit(a, b, bit, &rot_count);
-		optimize_rotations(a, rot_count);
-		empty_stack_b(a, b);
+		set_index(a);
+		size = list_len(*a);
+		max_bits = calculate_max_bits(size - 1);
+
+		bit = 0;
+		while (bit < max_bits)
+		{
+			process_current_bit(a, b, bit);
+			while (*b)
+				pa(a, b);
+			bit++;
+		}
 	}
 }
+

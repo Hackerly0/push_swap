@@ -34,7 +34,7 @@ void    sa(t_node **headA)
 	swap = top->data;
 	top->data = temp->data;
 	temp->data = swap;
-	write(1, "sa", 2);
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_node **headB)
@@ -50,7 +50,7 @@ void	sb(t_node **headB)
 	swap = top->data;
 	top->data = temp->data;
 	temp->data = swap;
-	write(1, "sb", 2);
+	write(1, "sb\n", 3);
 }
 
 void	pa(t_node **headA, t_node **headB)
@@ -150,9 +150,9 @@ void	rotate(t_node **list)
 	tail->next = head;
 }
 
-size_t	list_len(const t_node	*list)
+int	list_len(const t_node	*list)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while(list)

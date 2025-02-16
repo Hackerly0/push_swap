@@ -21,7 +21,7 @@ typedef struct	s_node
   The cost var is for measuring the cost of pushing this element to the other stack.
   The data var is the number that is contained in this node.
   The abv_med is to check if the element is above median node, this is because if the more above median
-    the cheaper it is to push.
+	the cheaper it is to push.
   The cheap is check weather this node is the cheapest to push or not.
   The next & prev pointers is for the circular linked list.
   The tar pointer is the target node in the other stack (for the algorithm).*/
@@ -41,10 +41,14 @@ void    rrb(t_node **headB);
 void    rrr(t_node **headA, t_node **headB);
 void	reverse_rotate(t_node **head);
 void	rotate(t_node **list);
-size_t	list_len(const t_node	*list);
+int		list_len(const t_node	*list);
 int		stack_sorted(t_node **stack_a);
 void    init_stack(t_node **a, t_node **b, char *argv[]);
 void    free_stack(t_node **stack);
 void	radix_sort(t_node **a, t_node **b);
+void	sort_three(t_node **stack);
+int		find_smallest_index(t_node *stack);
+void	sort_five(t_node **a, t_node **b);
+void	sort_two(t_node **stack);
 
 #endif
